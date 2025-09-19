@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@property --main-color {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #4a4af5;
+}
+:root {
+  font-size: 62.5%;
+  /* colors */
+  --white-color: #eee;
+  background-color: var(--white-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding: 1rem 3rem;
+  max-width: 140rem;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+span.logo-blue {
+  color: var(--main-color);
+  margin-left: -1.5rem;
+  & + .logo-blue {
+    color: initial;
+  }
+}
