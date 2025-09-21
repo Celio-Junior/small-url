@@ -33,16 +33,19 @@
 }
 
 .main-container .container-url {
+  transition: 0.5s;
+  position: relative;
   background-color: var(--main-color);
   width: 80%;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 7rem;
+  border-radius: 5rem;
   padding: 2rem 4rem;
   gap: 1rem;
 
   & .container-text {
     font-size: 1.8rem;
+    word-spacing: 0.2rem;
     color: var(--white-color);
   }
 
@@ -70,12 +73,27 @@
   }
 }
 
-#form .url-encurt {
+.container-url:has(.url-encurt.active) {
+  padding-bottom: 5rem;
+}
+
+.container-url .url-encurt {
+  position: absolute;
+  bottom: 1rem;
+  left: 4em;
+  transition: 0.4s;
+  opacity: 0;
+  z-index: -1;
+  &.active {
+    z-index: 1;
+    transition-delay: 0.2s;
+    opacity: 1;
+  }
   & p {
     font-size: 1.7rem;
     color: var(--white-color);
     text-align: justify;
-
+    word-spacing: 0.2rem;
     & strong {
       text-decoration: underline solid var(--white-color);
       cursor: pointer;
@@ -85,9 +103,6 @@
       & a.link {
         color: inherit;
       }
-    }
-
-    & strong.copy {
     }
   }
 }

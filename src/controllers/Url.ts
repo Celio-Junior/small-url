@@ -14,7 +14,7 @@ class UrlController {
 
   create(request: FastifyRequest<UrlRequestType>, reply: FastifyReply) {
     const { url_origin } = request.body;
-
+    console.log('teste', url_origin);
     try {
       const { href } = new URL(url_origin);
       // let count: number;
