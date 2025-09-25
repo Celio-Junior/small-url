@@ -1,23 +1,24 @@
+import { navigationLinksElement } from './elements/header';
+import { form, urlCopyLinkElement, urlContainerElement } from './elements/home';
+import type { ConfigViewUrls } from './interfaces/configViewUrls';
+import { changeUrl, pathUrls } from './services/change-url';
 import './styles/main.css';
 
-import { requestApi } from './utils/req-api';
-
-const form = document.querySelector('#form') as HTMLFormElement;
-const url_encurtElement = document.querySelector('.url-encurt') as HTMLDivElement;
-
-const URL_API = 'http://localhost:4000/small-url';
-
-const url_page = './src/pages/more-encurtadas.html';
-
-const result = await (await fetch(url_page)).text();
-
-console.log('result:\n', result);
+import { requestApi, URL_API } from './utils/req-api';
 
 let url_result: string;
 let url_hash: string;
 
+const configViewUrls: ConfigViewUrls = {
+  isChangeUrl: true,
+  dataAll: [],
+};
+
+changeUrl(configViewUrls);
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  // history.pushState({ teste: 13 }, '', 'teste');
   const newform = new FormData(e.target as HTMLFormElement);
 
   const value = newform.get('url_origin') as string;
@@ -29,14 +30,18 @@ form.addEventListener('submit', async (e) => {
     if (url.origin === 'null') return;
 
     // termina isso
-    console.log(url.href);
-    url_hash = await requestApi(`${URL_API}`, JSON.stringify({ url_origin: url.href }));
+
+    url_hash = (await requestApi('', 'POST', JSON.stringify({ url_origin: url.href }))).url_hash;
 
     url_result = `${URL_API}/${url_hash}`;
 
+    configViewUrls.isChangeUrl = true;
+
+    if (location.pathname === pathUrls[1]) changeUrl(configViewUrls);
+
     // element
-    if (url_encurtElement.classList.contains('active')) return;
-    url_encurtElement.classList.add('active');
+    if (urlContainerElement.classList.contains('active')) return;
+    urlContainerElement.classList.add('active');
   } catch (e) {
     if (e instanceof Error) {
       alert('error com sua url inválida');
@@ -46,9 +51,7 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-const url_encurt = ['.copy', '.link'].map((value) => document.querySelector(`.url-encurt ${value}`));
-
-url_encurt.forEach((element) => {
+urlCopyLinkElement.forEach((element) => {
   element?.addEventListener('click', () => {
     if (element.classList.contains('link')) {
       const link = element as HTMLLinkElement;
@@ -58,5 +61,17 @@ url_encurt.forEach((element) => {
     if (element.classList.contains('copy')) {
       navigator.clipboard.writeText(url_result);
     }
+  });
+});
+
+navigationLinksElement.forEach((linkElement, i) => {
+  linkElement.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    if (i === 0) history.pushState(null, 'home', pathUrls[0]);
+    if (i === 1) history.pushState(null, 'url mais encurtadas', pathUrls[1]);
+    // if (i === 2) history.pushState(null, 'my urls', pathUrls[2]);
+
+    changeUrl(configViewUrls);
   });
 });

@@ -14,7 +14,7 @@ class UrlController {
 
   create(request: FastifyRequest<UrlRequestType>, reply: FastifyReply) {
     const { url_origin } = request.body;
-    console.log('teste', url_origin);
+
     try {
       const { href } = new URL(url_origin);
       // let count: number;
@@ -74,6 +74,11 @@ class UrlController {
     if (!url_exists) return reply.status(400).send({ error: 'não existe essa url' });
 
     reply.redirect(url_exists.url_origin);
+  }
+
+  all(request: FastifyRequest, reply: FastifyReply) {
+    const urls = this.urlModel.findAll();
+    return reply.send(urls);
   }
 }
 

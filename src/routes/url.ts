@@ -5,5 +5,7 @@ import urlController from './../controllers/Url.js';
 export default function urlRoute(fastify: FastifyInstance) {
   fastify.post('/', urlController.create.bind(urlController));
 
+  fastify.get('/shorter-urls', urlController.all.bind(urlController));
+
   fastify.get('/:url_hash', urlController.show.bind(urlController));
 }

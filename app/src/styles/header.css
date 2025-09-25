@@ -12,12 +12,16 @@ header.container {
     width: 8rem;
     border-radius: 1rem;
   }
-  .logo-navigation {
+
+  & .logo-navigation {
     display: flex;
-    & h1 {
-      font-size: 5rem;
+    & h1.logo {
+      font-size: min(10vw, 5rem);
       white-space: nowrap;
       font-style: italic;
+      & a {
+        color: initial;
+      }
     }
 
     & .navigation {
@@ -42,52 +46,53 @@ header.container {
       }
     }
   }
+}
+.buttons-register-login,
+.buttons-copy-access {
+  display: flex;
+  flex-wrap: nowrap;
+  & .button {
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border: 0.2rem solid transparent;
+    transition: 0.4s;
 
-  & .buttons-register-login {
-    & .button {
-      background-color: #fff;
-      border: none;
-      border-radius: 1rem;
-      padding: 1rem;
-      font-size: 1.8rem;
-      cursor: pointer;
-      border: 0.2rem solid transparent;
-      transition: 0.4s;
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    &.button-register {
+      border-color: var(--main-color);
+      color: var(--main-color);
 
       &:hover {
-        transform: scale(1.03);
-      }
-
-      &.button-register {
-        border-color: var(--main-color);
-        color: var(--main-color);
-
-        &:hover {
-          background-color: var(--main-color);
-          color: var(--white-color);
-
-          & + .button-login {
-            background-color: var(--white-color);
-            color: var(--main-color);
-            border-color: var(--main-color);
-          }
-        }
-        &:has(+ .button-login:hover) {
-          background-color: var(--main-color);
-          color: var(--white-color);
-        }
-      }
-
-      &.button-login {
-        margin-left: 2rem;
         background-color: var(--main-color);
         color: var(--white-color);
 
-        &:hover {
+        & + .button-login {
           background-color: var(--white-color);
           color: var(--main-color);
           border-color: var(--main-color);
         }
+      }
+      &:has(+ .button-login:hover) {
+        background-color: var(--main-color);
+        color: var(--white-color);
+      }
+    }
+
+    &.button-login {
+      margin-left: 2rem;
+      background-color: var(--main-color);
+      color: var(--white-color);
+
+      &:hover {
+        background-color: var(--white-color);
+        color: var(--main-color);
+        border-color: var(--main-color);
       }
     }
   }
