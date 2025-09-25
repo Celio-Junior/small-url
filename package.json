@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx --watch --env-file=./.env ./src/index.ts"
+    "dev:server": "tsx --watch --env-file=./.env ./src/index.ts",
+    "build:server": "tsc -p tsconfig.json",
+    "dev:app": "vite",
+    "build:app": "vite build --config vite.config.ts",
+    "preview": "vite preview",
+    "start": "node --env-file=./.env ./dist",
+    "build:full": "tsc -p tsconfig.json && vite build --config vite.config.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +23,8 @@
     "env-var": "^7.5.0",
     "fastify": "^5.5.0",
     "sql-bricks": "^3.0.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",

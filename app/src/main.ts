@@ -18,7 +18,7 @@ changeUrl(configViewUrls);
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  // history.pushState({ teste: 13 }, '', 'teste');
+  // history.pushState({ test: 13 }, '', 'test');
   const newform = new FormData(e.target as HTMLFormElement);
 
   const value = newform.get('url_origin') as string;
@@ -28,8 +28,6 @@ form.addEventListener('submit', async (e) => {
   try {
     const url = new URL(value);
     if (url.origin === 'null') return;
-
-    // termina isso
 
     url_hash = (await requestApi('', 'POST', JSON.stringify({ url_origin: url.href }))).url_hash;
 
@@ -44,7 +42,7 @@ form.addEventListener('submit', async (e) => {
     urlContainerElement.classList.add('active');
   } catch (e) {
     if (e instanceof Error) {
-      alert('error com sua url inválida');
+      alert('error com sua url invalid');
       form.reset();
     }
     console.log(e);

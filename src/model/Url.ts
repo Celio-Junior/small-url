@@ -3,7 +3,7 @@ import type { SelectWhereType } from '../interface/databaseSqlite.js';
 import type { UrlModelType } from '../interface/url.js';
 
 export default class UrlModel {
-  declare teste: string;
+  declare test: string;
   private db: DatabaseSqlite;
   constructor() {
     this.db = new DatabaseSqlite();
