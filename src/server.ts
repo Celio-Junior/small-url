@@ -32,5 +32,9 @@ export default class App {
     this.server.register(urlRoute, {
       prefix: '/small-url',
     });
+
+    this.server.get('/short-urls', (request, reply) => {
+      reply.sendFile('index.html');
+    });
   }
 }
