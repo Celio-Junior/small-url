@@ -5,8 +5,12 @@ esse projeto que criei, que tem objetivo encurtar url, ele no caso encurtar tbm 
 * NODE(versão 22.14.0 LTS)
 * Typescript/Javascript
 
-## depenências
+## depedências
 * fastify(pra instanciar o server, tbm tem junto algumas dependências junto com ele)
 * sql-bricks(inserir comandos mais seguros com sql)
 * env-var(para tipar e pegar variaveis de ambiente)
 * typescript(esse projeto foi usado ele como linguagem main)
+
+## ❌ serviço que não foram feito ❌
+* Sistema de login
+* aba de suas urls que foram encurtadas
