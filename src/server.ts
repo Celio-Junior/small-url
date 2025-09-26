@@ -15,7 +15,7 @@ export default class App {
   }
 
   public listen(port: number, callback: ListenType) {
-    this.server.listen({ port }, callback);
+    this.server.listen({ port, host: '0.0.0.0' }, callback);
   }
   private middlewares(): void {
     this.server.register(fastifyFormbody);
