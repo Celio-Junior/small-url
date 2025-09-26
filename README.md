@@ -17,4 +17,5 @@ esse projeto que criei, que tem objetivo encurtar url, ele no caso encurtar tbm 
 
 # Small Url
 
-site de encurtar url que foi feito co tecnologias vanillas, mas com acréssimo do typescript, tanto frontend e seu backend, site consta pro usuário encurtar ulr, como opções de acessar diretamene ou copiar a url que foi encurtada, ele mecanismo de route-dom(antiga de dependência de routeamentos sem recarregar páginas), que tem proposta como foi dito direcionar "páginas" sem recarregar a própria página, tudo isso sendo feito nativamente sem uso de bibliotecas/dependências
+Site que tem a proposta <strong>encurtar url</strong>  que foi feito vanillamente, mas com acréssimo do typescript, tanto frontend e seu backend, site consta pro usuário encurtar ulr, como opções de acessar diretamente ou copiar a url que foi encurtada, ele tem mecanismo de route-dom(antiga de dependência de routeamentos sem recarregar páginas), que tem proposta como foi dito direcionar "páginas" sem recarregar a própria página, tudo isso sendo feito nativamente sem uso de bibliotecas/dependências, seu banco de dandos escolhido foi o <strong>SQLITE</strong>, mas isso usando própio node com o seu módulo
+
